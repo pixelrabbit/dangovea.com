@@ -1,0 +1,127 @@
+@import "elements.less";
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900|Arbutus+Slab);
+
+//http://www.colourlovers.com/palette/3688156/Hard_Curls
+.nomp {margin: 0; padding: 0; list-style:none;}
+.clearfix{
+  zoom:1;
+  &:before, &:after{ content:""; display:table; }
+  &:after{ clear: both; }
+}
+
+@white:#fff;
+@black: #0a1517;
+@aqua: #1D8681;
+@salmon: #DC333a;
+@purple: saturate(lighten(#352228,14%),24%);
+
+@medium:600px;
+@large:900px;
+
+.grayscale(@value: 1) {
+    -webkit-filter: grayscale(@value);
+    -moz-filter: grayscale(@value);
+    -o-filter: grayscale(@value);
+    -ms-filter: grayscale(@value);
+    filter: grayscale(@value);
+}
+
+
+body {font-size:16px; margin:0; font-family: 'Source Sans Pro', sans-serif; font-weight:300; counter-reset: footnote; }
+body * {box-sizing:border-box;}
+h1,h2,h3 {font-weight:300; .nomp; font-family: 'Arbutus Slab';}
+h1 {text-transform:uppercase; font-size:3.5em;}
+h2 {font-size:2em;}
+h3 {margin:1em 0;}
+a {color:@purple; text-decoration: none;
+    &:hover {color:@salmon;}
+}
+.row {max-width:74em; min-width: 320px;  margin: 0 auto; padding:0 1em; .clearfix;}
+.respimg(@ratio:56.25%) {width: 100%; padding-bottom: @ratio; position: relative; overflow:hidden;
+    img { position: absolute; top: 0; bottom: 0; left: 0; right: 0; max-width:100%;}
+}
+
+#page {padding: 4em 0 0; }
+
+.site-header {height:4em; background:fade(@black,85%); position:fixed; top:0; left:0; right:0; z-index:1000; overflow:hidden; padding: 0 1em;
+    a {color:@white; font-size:1.4em; text-decoration:none;}
+    h1 {.nomp; float:left; font-size:1.5em; line-height:4rem; margin: 0; padding: 0; }
+    nav {display: none;
+        @media screen and (min-width: @medium) {display: block;}
+        ul {float:right; .nomp; font-family: 'Arbutus Slab';
+            li {float:left; margin:0 0 0 2em; padding: 0; 
+                a {line-height:4rem;}
+            }
+        }
+    }
+}
+
+cite{position: relative; 
+    &:after {content: counter(footnote); counter-increment: footnote; font-size: 0.5em; font-weight: bold; vertical-align: top; color:@salmon;}
+    &:hover:before {content: attr(rel); position: absolute; right:0; bottom:2em; font-style: normal; display: block; font-size: 0.6em; background:@purple; color:@white; padding: 0.5em}
+}
+
+section {margin: 0; padding:0; .clearfix;  position: relative;
+    aside {overflow: hidden; position: absolute; top:0; right:0;
+        .img {opacity: 0.33; min-height:100%; width:100%; height:auto; background:no-repeat center center; background-size: cover;}
+    } 
+    article { padding:1em; z-index: 1; background: @white; position: relative; margin:0;
+        h2 {position: relative; z-index: 1; padding: 0.5em 1em; margin:0 0 1em; color:@white; font-weight: 300; text-transform: uppercase;}
+        p,ul {font-size:1.2em; margin:1em 0;
+            @media screen and (min-width: 1200px){font-size: 1.4em;}
+            @media screen and (min-width: 1500px){font-size: 1.5em;}
+        }
+
+    }
+    &.right {
+        aside {left:0;}
+        article {right:0;}
+    }
+    &.left {
+        aside {right:0;}
+        article {left:0;}
+    }
+
+    @media screen and (min-width: @medium) {
+        article {margin:2em; padding:1em 2em;}
+    }
+    @media screen and (min-width: @large) {height: 90vh; min-height:32em;
+        article, aside {width:50%; top:0; bottom:0; position: absolute; }
+        article {margin:0;
+            h2 {position: absolute; right:100%; margin: 1em; }
+        }
+        &.left {
+            aside {right:0;}
+            h2 {right:auto; left:100%;}
+        }
+    }
+}
+.accent(@color:@aqua, @image:"../img/tools.jpg") {
+    aside,h2 {background:@color;}
+    aside .img {background-image: url(@image) }
+    h2:after {content: ""; background: url(@image); background-size:100% auto; opacity: 0.25; top: 0; left: 0; bottom: 0; right: 0; position: absolute; z-index: -1;}
+    @media screen and (min-width: @large) {
+        h2 {background: fade(@color, 66.6%);}
+        h2:after {display: none;}
+    }
+}
+
+//ABOUT
+#about {.accent(@aqua, "../img/rabbit.jpg");}
+
+//TOOLS
+#tools {
+    .accent(@purple, "../img/artsupplies.jpg");
+    ul {list-style:none; .nomp; .clearfix; margin:0; display: flex; align-content:flex-start; align-items:center; flex-wrap:wrap;
+        li {margin:0.5em; display: block; height: 4em; text-align: center; flex:1 1 100%;
+            @media screen and (min-width: @medium) {flex:1 1 auto; display: inline-block;}
+            img{height:100%; .grayscale(1); opacity:0.8; .transition(0.2s);
+                &:hover {.grayscale(0);}
+            }
+            .desc {display: none;}
+        }
+    }
+}
+
+//WORK
+#work {.accent(@salmon, "../img/files.jpg");}

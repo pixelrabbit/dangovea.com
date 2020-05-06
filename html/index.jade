@@ -1,0 +1,54 @@
+doctype html
+html(class='no-js')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title Dan Govea - Austin based design and development
+    meta(name='description', content='')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href="css/pixelrabbit.css",rel="stylesheet",type="text/css")
+    script(src="//code.jquery.com/jquery-1.11.3.min.js")
+    script(src="js/pixelrabbit.js")
+  body
+      #page
+        header.site-header
+            h1.logo
+                a(href="#") Dan Govea
+            nav#primary
+                ul
+                    each item in ["About","Tools","Work"]
+                        li
+                            a(href="#"+item.toLowerCase()) #{item} 
+        section#about.right
+            article 
+                h2 About
+                p My name is <cite rel='hence, the domain name'>Dan Govea</cite>.  I'm a senior designer and front-end developer  employed at Digital Cheetah Solutions in the great oasis that is Austin, Texas.  
+                p More than that, I am the father of two children: a seven year old girl and a six year old boy and the husband of <cite rel="Identity withheld">one woman</cite>.  I am an avid learner and a little bit of a <cite rel="Seriously, it borders on the absurd">cartoon afficionado</cite>.  I am also a huge fan of the San Antonio Spurs and a lover of music of <cite rel="Even some country.">all kinds</cite>.
+                p Also I used to go by the name of PixelRabbit...
+            aside: div.img
+        section#tools.left
+            article
+                h2 Work Smarter
+                p A developer whom is not utilizing the most appropriate and efficient tools to fulfill their tasks is probably taking way too long to fulfill their tasks.  And as <cite rel="Way too many cartoons...">Scrooge McDuck</cite> taught me when I was younger, "<a href="https://www.youtube.com/watch?v=8jEZraf0eDI" target="_blank">work smarter, not harder</a>".
+                p These are a sampling of the tools that I use and recommend:
+                ul.tools
+                    - var titles = ["NodeJS","GruntJS","Sublime Text","jQuery","jade"]
+                    - var img = ["nodejs","grunt","sublimetext","jquery",'jade',"wordpress","drupal"]
+                    - var url = ["#","#","#","jquery.com"]
+                    - var text = ["Node is an amazing tool for designing and developing site UX.  Previously I had used tools such as Codekit and Prepros to manage my workflow.  No more as Node allows me to run a local server and design/develop almost in real time.","My task runner of choice.  Why?  It's a close call between Grunt and Gulp but in the end I suppose it mostly comes down to familiarity and number of available modules.  And in that regard, Grunt is the clear winner.",""]
+                    each item,i in img
+                        li(class='li#{i}')
+                            a(href="#{url[i]}"): img(src="img/#{img[i]}.png")
+            aside: div.img
+        section#work.right
+            article
+                h2 Work Consistenly
+                p I have been working at Digital Cheetah Solutions, Inc. for over six years now.  I started as a contractor working purely in <cite rel="hey, it was a long time ago">table based front-end designs</cite> that were then instituded by a Digital Cheetah developer.  Eventually I decided to work full time in the office in order to <cite rel="...do it myself">best manage the transition from design to production</cite>.
+                p Fast forward, six years later.  I am Senior Designer and Senior Front-end Developer and have had the pleasure of working a number of projects for big time clients.  For example:
+                ul
+                    li Created the framework and code guidelines for the volunteer interface for the <a href="http://ajli.org/" target="_blank">American Red Cross</a>
+                    li Developed and coded the interface for both <a href="http://au.autodesk.com/" target="_blank">Autodesk University</a> 2013 and 2014
+                    //li Created a theming system based off <a href="http://wordpress.org/" target="_blank">Wordpress</a> that allows smaller clients to take advantage of technology usually reserved for Enterprise level clients
+                    li I've also had the honor and pleasure of working with clients such as <a href="http://ajli.org/" target="_blank">AJLI</a>, <a href="http://bestfriends.org/" target="_blank">the Best Friends Animal Society</a>, the <a href="http://www.nationalcharityleague.org/" target="_blank">National Charity League</a>, and many more.
+            aside: div.img
+        .site-footer 
